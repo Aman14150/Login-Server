@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
 
-const connectDb = async ()=>{
+const connectDb = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/nemtask')
-        console.log('Connection Sucessfull with Mongoose')
+        await mongoose.connect('mongodb://localhost:27017/nemtask', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            // useCreateIndex: true
+        });
+        console.log('Connection Successful with Mongoose');
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
-}
-module.exports = {connectDb};
+};
+
+module.exports = { connectDb };
